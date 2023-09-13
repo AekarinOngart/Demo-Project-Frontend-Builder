@@ -37,51 +37,55 @@ def get_products_k():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-# เส้นทาง API สำหรับดึงข้อมูลจากตาราง product_k รวมกับ product_k_detail พร้อมสี สวิตช์ และภาษา
-@app.route('/products_k_with_detail', methods=['GET'])
-def get_products_k_with_detail():
+
+# ดึงข้อมูลสินค้าและรายละเอียดของ product_k ตาม ID
+@app.route('/products_k/<int:product_id>', methods=['GET'])
+def get_product_k_with_detail(product_id):
     try:
         cursor = mysql.connection.cursor()
 
-        # ใช้ JOIN ระหว่างตาราง product_k และ product_k_detail โดยเชื่อมด้วย product_id
-        cursor.execute("""
-            SELECT k.product_id, k.product_name, k.product_price, k.product_quantity, k.product_image,
-                   d.image_1, d.image_2, d.image_3, d.color, d.switch, d.language
-            FROM product_k AS k
-            LEFT JOIN product_k_detail AS d ON k.product_id = d.product_id
-            WHERE k.product_quantity > 0
-        """)
+        # ดึงข้อมูลจากตาราง product_k
+        cursor.execute("SELECT * FROM product_k WHERE product_id = %s", (product_id,))
+        product_k = cursor.fetchone()
 
-        products = cursor.fetchall()
+        if not product_k:
+            return jsonify({'message': 'ไม่พบสินค้า product_k ที่มี ID นี้'}), 404
+
+        # ดึงข้อมูลจากตาราง product_k_detail สำหรับรายการสินค้านี้
+        cursor.execute("SELECT * FROM product_k_detail WHERE product_id = %s", (product_id,))
+        product_k_detail = cursor.fetchall()
+
         cursor.close()
 
-        # สร้างโครงสร้าง JSON ใหม่
-        product_dict = {}
-        for product in products:
-            product_id = product[0]
-            if product_id not in product_dict:
-                product_dict[product_id] = {
-                    'product_id': product_id,
-                    'product_name': product[1],
-                    'product_price': float(product[2]),
-                    'product_quantity': product[3],
-                    'product_image': product[4],
-                    'details': []
-                }
-            product_dict[product_id]['details'].append({
-                'image_1': product[5],
-                'image_2': product[6],
-                'image_3': product[7],
-                'color': product[8],
-                'switch': product[9],
-                'language': product[10]
-            })
+        # เรียงลำดับ product_k_detail ตามคอลัมน์ id ในลำดับจากน้อยไปมาก
+        product_k_detail_sorted = sorted(product_k_detail, key=lambda x: x[0])
 
-        # แปลงโครงสร้าง JSON ใหม่เป็นลิสต์ข้อมูล
-        product_list = list(product_dict.values())
+        # สร้างข้อมูลผลลัพธ์ที่รวมข้อมูล product_k และ product_k_detail
+        result = {
+            'product_k': {
+                'product_id': product_k[0],
+                'product_name': product_k[1],
+                'product_price': float(product_k[2]),
+                'product_quantity': product_k[3],
+                'product_image': product_k[4]
+            },
+            'product_k_detail': []
+        }
 
-        return jsonify({'k_series_with_detail': product_list})
+        for detail in product_k_detail_sorted:
+            product_detail = {
+                'id': detail[0],
+                'color': detail[1],
+                'switch': detail[2],
+                'language': detail[3],
+                'quantity': detail[4],
+                'image_1': detail[6],
+                'image_2': detail[7],
+                'image_3': detail[8]
+            }
+            result['product_k_detail'].append(product_detail)
+
+        return jsonify(result)
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -114,6 +118,58 @@ def get_products_k_pro():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# ดึงข้อมูลสินค้าและรายละเอียดของ product_k_pro ตาม ID
+@app.route('/products_k_pro/<int:product_id>', methods=['GET'])
+def get_product_k_pro_with_detail(product_id):
+    try:
+        cursor = mysql.connection.cursor()
+
+        # ดึงข้อมูลจากตาราง product_k_pro
+        cursor.execute("SELECT * FROM product_k_pro WHERE product_id = %s", (product_id,))
+        product_k_pro = cursor.fetchone()
+
+        if not product_k_pro:
+            return jsonify({'message': 'ไม่พบสินค้า product_k_pro ที่มี ID นี้'}), 404
+
+        # ดึงข้อมูลจากตาราง product_k_pro_detail สำหรับรายการสินค้านี้
+        cursor.execute("SELECT * FROM product_k_pro_detail WHERE product_id = %s", (product_id,))
+        product_k_pro_detail = cursor.fetchall()
+
+        cursor.close()
+
+        # เรียงลำดับ product_k_pro_detail ตามคอลัมน์ id ในลำดับจากน้อยไปมาก
+        product_k_pro_detail_sorted = sorted(product_k_pro_detail, key=lambda x: x[0])
+
+        # สร้างข้อมูลผลลัพธ์ที่รวมข้อมูล product_k_pro และ product_k_pro_detail
+        result = {
+            'product_k_pro': {
+                'product_id': product_k_pro[0],
+                'product_name': product_k_pro[1],
+                'product_price': float(product_k_pro[2]),
+                'product_quantity': product_k_pro[3],
+                'product_image': product_k_pro[4]
+            },
+            'product_k_pro_detail': []
+        }
+
+        for detail in product_k_pro_detail_sorted:
+            product_detail = {
+                'id': detail[0],
+                'color': detail[1],
+                'switch': detail[2],
+                'language': detail[3],
+                'quantity': detail[4],
+                'image_1': detail[6],
+                'image_2': detail[7],
+                'image_3': detail[8]
+            }
+            result['product_k_pro_detail'].append(product_detail)
+
+        return jsonify(result)
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 # ดึงข้อมูลสินค้าทั้งหมดของ product_q
 @app.route('/products_q', methods=['GET'])
 def get_products_q():
@@ -142,10 +198,57 @@ def get_products_q():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# ดึงข้อมูลสินค้าและรายละเอียดของ product_q ตาม ID
+@app.route('/products_q/<int:product_id>', methods=['GET'])
+def get_product_q_with_detail(product_id):
+    try:
+        cursor = mysql.connection.cursor()
+
+        # ดึงข้อมูลจากตาราง product_q
+        cursor.execute("SELECT * FROM product_q WHERE product_id = %s", (product_id,))
+        product_q = cursor.fetchone()
+
+        if not product_q:
+            return jsonify({'message': 'ไม่พบสินค้า product_q ที่มี ID นี้'}), 404
+
+        # ดึงข้อมูลจากตาราง product_q_detail สำหรับรายการสินค้านี้
+        cursor.execute("SELECT * FROM product_q_detail WHERE product_id = %s", (product_id,))
+        product_q_detail = cursor.fetchall()
+
+        cursor.close()
+
+        # เรียงลำดับ product_q_detail ตามคอลัมน์ id ในลำดับจากน้อยไปมาก
+        product_q_detail_sorted = sorted(product_q_detail, key=lambda x: x[0])
+
+        # สร้างข้อมูลผลลัพธ์ที่รวมข้อมูล product_q และ product_q_detail
+        result = {
+            'product_q': {
+                'product_id': product_q[0],
+                'product_name': product_q[1],
+                'product_price': float(product_q[2]),
+                'product_quantity': product_q[3],
+                'product_image': product_q[4]
+            },
+            'product_q_detail': []
+        }
+
+        for detail in product_q_detail_sorted:
+            product_detail = {
+                'id': detail[0],
+                'color': detail[1],
+                'switch': detail[2],
+                'language': detail[3],
+                'quantity': detail[4],
+                'image_1': detail[6],
+                'image_2': detail[7],
+                'image_3': detail[8]
+            }
+            result['product_q_detail'].append(product_detail)
+
+        return jsonify(result)
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
