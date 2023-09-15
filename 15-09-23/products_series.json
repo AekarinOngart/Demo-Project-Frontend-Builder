@@ -1,0 +1,136 @@
+{
+    "series":[
+       {
+          "k":[
+             {
+                "id":1,
+                "title":"Keychron K1 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Version 5)",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":2,
+                "title":"Keychron K2 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Non-Hot-swappable)",
+                "price":3590,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":3,
+                "title":"Keychron K3 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":4,
+                "title":"Keychron K4 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4390,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             }
+          ],
+          "kpro":[
+             {
+                "id":1,
+                "title":"Keychron K Pro 1 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Version 5)",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":2,
+                "title":"Keychron K Pro 2 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Non-Hot-swappable)",
+                "price":3590,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":3,
+                "title":"Keychron K Pro 3 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":4,
+                "title":"Keychron K Pro 4 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4390,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             }
+          ],
+          "q":[
+             {
+                "id":1,
+                "title":"qeychron Q1 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Version 5)",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":2,
+                "title":"Keychron Q2 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Non-Hot-swappable)",
+                "price":3590,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":3,
+                "title":"Keychron Q3 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":4,
+                "title":"Keychron Q4 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4390,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             }
+          ],
+          "qpro":[
+             {
+                "id":1,
+                "title":"Keychron Q Pro 1 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Version 5)",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":2,
+                "title":"Keychron Q Pro 2 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Non-Hot-swappable)",
+                "price":3590,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":3,
+                "title":"Keychron Q Pro 3 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":4,
+                "title":"Keychron Q Pro 4 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4390,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             }
+          ],
+          "v":[
+             {
+                "id":1,
+                "title":"qeychron V1 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Version 5)",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":2,
+                "title":"Keychron V2 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย (Non-Hot-swappable)",
+                "price":3590,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":3,
+                "title":"Keychron V3 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4090,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             },
+             {
+                "id":4,
+                "title":"Keychron V4 Mechanical Keyboard แมคคานิคอลคีย์บอร์ดไร้สาย",
+                "price":4390,
+                "image":"https://www.jib.co.th/img_master/product/original/20200819104857_1.jpg"
+             }
+          ]
+       }
+    ]
+ }
